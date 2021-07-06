@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { Radio } from 'antd';
-import { EditFilled, DeleteFilled, CheckOutlined } from '@ant-design/icons';
+import { EditFilled, DeleteFilled } from '@ant-design/icons';
 
 import { removeTask, updateCompletedTask } from "../../redux/actions/taskActions";
 import styles from './TaskItem.module.scss';
@@ -28,9 +28,6 @@ export default function TaskItem({ id, title, isCompleted }) {
                     <Radio checked={isChecked} value={isChecked} onClick={() => setIsChecked(!isChecked)}>{title}</Radio> :
                     <InputChange id={id} title={title} setIsChange={setIsChange} />}
                 <div className={styles.helpers}>
-                    <div className="ico-lg">
-                        <CheckOutlined />
-                    </div>
                     <div className="ico-lg mx-1" onClick={() => setIsChange(!isChange)}>
                         <EditFilled />
                     </div>
