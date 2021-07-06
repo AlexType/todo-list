@@ -1,0 +1,22 @@
+.card {
+  position: relative;
+  padding: 10px 20px;
+  background: rgba(236, 236, 236, 0.466);
+  border-radius: 5px;
+  &:hover .helpers {
+    opacity: 1;
+  }
+}
+
+.isChange:hover .helpers {
+  opacity: 0;
+}
+
+.helpers {
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.2s ease-in-out;
+}

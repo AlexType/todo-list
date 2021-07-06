@@ -4,8 +4,7 @@ const initialState = {
     tasksLength: 1,
     tasks: [
         {
-            title: 'title',
-            description: 'description',
+            title: 'Написать Todo List',
             id: 0
         }
     ]
