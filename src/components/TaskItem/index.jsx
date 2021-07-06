@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { Radio } from 'antd';
 import { EditFilled, DeleteFilled, CheckOutlined } from '@ant-design/icons';
 
-import { removeTask } from "../../redux/actions/taskActions";
+import { removeTask, updateCompletedTask } from "../../redux/actions/taskActions";
 import styles from './TaskItem.module.scss';
 import InputChange from './components/InputChange';
 
-export default function TaskItem({ id, title }) {
-
-    const [isChange, setIsChange] = useState(false);
+export default function TaskItem({ id, title, isCompleted }) {
 
     const dispatch = useDispatch();
+    const [isChecked, setIsChecked] = useState(isCompleted);
+    const [isChange, setIsChange] = useState(false);
+
+    useEffect(() => {
+        dispatch(updateCompletedTask(id, isChecked));
+    }, [isChecked]);
 
     const deleteHandler = () => {
         dispatch(removeTask(id));
@@ -19,9 +23,9 @@ export default function TaskItem({ id, title }) {
 
     return (
         <div className="col">
-            <div className={`${styles.card} ${isChange ? styles.isChange : ''}`}>
+            <div className={`${styles.card} ${isChange ? styles.isChange : ''} ${isChecked ? styles.isChecked : ''}`}>
                 {!isChange ?
-                    <Radio >{title}</Radio> :
+                    <Radio checked={isChecked} value={isChecked} onClick={() => setIsChecked(!isChecked)}>{title}</Radio> :
                     <InputChange id={id} title={title} setIsChange={setIsChange} />}
                 <div className={styles.helpers}>
                     <div className="ico-lg">

@@ -12,6 +12,10 @@
   opacity: 0;
 }
 
+.isChecked {
+  text-decoration: line-through;
+}
+
 .helpers {
   opacity: 0;
   position: absolute;

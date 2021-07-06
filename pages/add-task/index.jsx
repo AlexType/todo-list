@@ -11,7 +11,11 @@ export default function AddTask() {
     const [title, setTitle] = useState('');
 
     const addHandler = () => {
-        dispatch(addTask({ title, id: nanoid() }));
+        dispatch(addTask({
+            id: nanoid(),
+            title,
+            isCompleted: false
+        }));
         clearHandler();
     };
 

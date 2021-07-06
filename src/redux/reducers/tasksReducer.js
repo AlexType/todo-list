@@ -1,11 +1,12 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_TITLE_TASK } from "../types";
+import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_TITLE_TASK } from "../types";
 
 const initialState = {
     tasksLength: 1,
     tasks: [
         {
+            id: 0,
+            isCompleted: true,
             title: 'Написать Todo List',
-            id: 0
         }
     ]
 }
@@ -32,6 +33,13 @@ export const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map((task) => task.id === action.payload.id ? { ...task, title: action.payload.title } : task)
+            }
+        }
+
+        case UPDATE_COMPLETED_TASK: {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.payload.id ? { ...task, isCompleted: action.payload.isCompleted } : task)
             }
         }
 
