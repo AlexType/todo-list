@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { Radio } from 'antd';
+import { Radio, message } from 'antd';
 import { EditFilled, DeleteFilled } from '@ant-design/icons';
 
 import { removeTask, updateCompletedTask } from "../../redux/actions/taskActions";
@@ -17,15 +17,21 @@ export default function TaskItem({ id, title, isCompleted }) {
         dispatch(updateCompletedTask(id, isChecked));
     }, [isChecked]);
 
+    const checkHandler = () => {
+        !isChecked ? message.success('Задача завершена') : message.warning('Задача востановлена');
+        setIsChecked(!isChecked);
+    };
+
     const deleteHandler = () => {
         dispatch(removeTask(id));
+        message.warning('Задача удалена');
     };
 
     return (
         <div className="col">
             <div className={`${styles.card} ${isChange ? styles.isChange : ''} ${isChecked ? styles.isChecked : ''}`}>
                 {!isChange ?
-                    <Radio checked={isChecked} value={isChecked} onClick={() => setIsChecked(!isChecked)}>{title}</Radio> :
+                    <Radio checked={isChecked} value={isChecked} onClick={checkHandler}>{title}</Radio> :
                     <InputChange id={id} title={title} setIsChange={setIsChange} />}
                 <div className={styles.helpers}>
                     <div className="ico-lg mx-1" onClick={() => setIsChange(!isChange)}>
