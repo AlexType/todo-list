@@ -1,11 +1,12 @@
 import { Form, FormControl, Navbar, Nav, Button } from "react-bootstrap";
 import Link from 'next/link'
 
-export default function Header() {
+const Header = () => {
+
     return (
         <Navbar bg="light" variant="light">
             <div className="container">
-                <div className="row justify-content-center justify-content-md-between w-100">
+                <div className="row justify-content-center justify-content-md-between w-100 m-0">
                     <div className="col-auto d-flex align-items-center">
                         <Navbar.Brand>TodoList</Navbar.Brand>
                         <Nav className='ml-4'>
@@ -23,7 +24,7 @@ export default function Header() {
                     <div className="col-auto d-none d-sm-block mt-2 mt-md-0">
                         <Form inline>
                             <FormControl type="text" placeholder="Найти задачу" className="mr-sm-2" />
-                            <Button variant="outline-primary">Поиск</Button>
+                            <Button variant="outline-primary" >Поиск</Button>
                         </Form>
                     </div>
                 </div>
@@ -31,3 +32,5 @@ export default function Header() {
         </Navbar>
     )
 }
+
+export default Header;
