@@ -22,7 +22,7 @@ export default function TaskItem({ id, title }) {
             <div className={`${styles.card} ${isChange ? styles.isChange : ''}`}>
                 {!isChange ?
                     <Radio >{title}</Radio> :
-                    <InputChange title={title} setIsChange={setIsChange} />}
+                    <InputChange id={id} title={title} setIsChange={setIsChange} />}
                 <div className={styles.helpers}>
                     <div className="ico-lg">
                         <CheckOutlined />
