@@ -1,9 +1,9 @@
-import { Card, Button } from "react-bootstrap"
+import { Card } from 'antd';
+import { EditOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { useDispatch } from "react-redux";
 import { removeTask } from "../../redux/actions/taskActions";
 
 export default function TaskItem({ id, title, description }) {
-
     const dispatch = useDispatch();
 
     const deleteHandler = () => {
@@ -11,13 +11,18 @@ export default function TaskItem({ id, title, description }) {
     };
 
     return (
-        <Card>
-            <Card.Header>Задача {id}</Card.Header>
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>{description}</Card.Text>
-                <Button variant="danger" onClick={deleteHandler}>Удалить задачу</Button>
-            </Card.Body>
+        <Card
+            className="mb-3"
+            size="small"
+            title={title}
+            style={{ width: 300 }}
+            actions={[
+                <CheckOutlined key="done" />,
+                <EditOutlined key="edit" />,
+                <CloseOutlined key="remove" onClick={deleteHandler} />,
+            ]}
+        >
+            <p className="mb-0">{description}</p>
         </Card>
     )
 }

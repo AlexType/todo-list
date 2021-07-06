@@ -1,0 +1,20 @@
+.header {
+    padding: 15px 0;
+    background: rgb(224, 224, 224);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e1e1e;
+    text-decoration: none;
+    &:hover {
+        color: #1e1e1e;
+        text-decoration: underline;
+    }
+}
