@@ -28,9 +28,10 @@ export default function AllTasks() {
             <Modal
                 title="Быстрое добавление"
                 visible={visible}
+                onCancel={handleCancel}
                 footer={[
                     <Button key="submit" className="btn-success" onClick={handleCancel}>
-                        Закрыть
+                        Готово
                     </Button>
                 ]}
             >

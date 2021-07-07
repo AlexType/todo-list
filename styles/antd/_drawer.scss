@@ -7,7 +7,11 @@
 .ant-drawer-header {
     padding: 26px 24px;
     border: none;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.39);
+}
+
+.ant-modal-footer,
+.ant-modal-header {
+    border-color: rgba(255, 255, 255, 0.39);
 }
 
 .ant-drawer-title {
