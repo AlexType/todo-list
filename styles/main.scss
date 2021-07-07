@@ -15,12 +15,24 @@
 @import "~bootstrap/scss/utilities/api";
 
 // common
+@import "common/logo";
 @import "common/link";
 @import "common/ico";
-@import "common/messages";
 
 // components
 @import "components/task-add";
+
+// containers
+@import "containers/header";
+
+// custom antd
+@import "antd/drawer";
+@import "antd/messages";
+
+body {
+    background: #696969;
+    color: #fff;
+}
 
 p {
     margin-bottom: 0;

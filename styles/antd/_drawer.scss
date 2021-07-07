@@ -1,0 +1,31 @@
+.ant-drawer-header,
+.ant-drawer-content,
+.ant-drawer-content-wrapper {
+    background-color: #3b3b3d;
+}
+
+.ant-drawer-header {
+    padding: 26px 24px;
+    border: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.39);
+}
+
+.ant-drawer-title {
+    font-weight: 900;
+    font-size: 20px;
+    color: #ececec;
+}
+
+.ant-drawer-close {
+    padding: 0 !important;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-55%);
+    svg {
+        fill: #ececec;
+        transition: 0.3s ease-in-out;
+        &:hover {
+            fill: #ffffff;
+        }
+    }
+}

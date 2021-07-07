@@ -1,0 +1,15 @@
+.header {
+    padding: 15px 0;
+    background: #3b3b3d;
+    &__link {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fdfdfd;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+            color: #1e1e1e;
+            text-decoration: underline;
+        }
+    }
+}
