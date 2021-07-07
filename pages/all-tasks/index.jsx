@@ -20,7 +20,7 @@ export default function AllTasks() {
 
     return (
         <div className="container">
-            <h1>Все задачи</h1>
+            <h1 className="title-page mb-4">Все задачи</h1>
             <TasksList tasks={tasks} />
             <Button className="mt-4" type="primary" onClick={showModal}>
                 Добавить задачу
