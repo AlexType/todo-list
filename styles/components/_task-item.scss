@@ -1,0 +1,48 @@
+.task-add {
+    position: relative;
+    padding: 10px 20px;
+    background: #3b3b3d;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px #f8f7f725;
+    &:not(.is-change):hover .task-add__helpers {
+        opacity: 1;
+    }
+    .ant-radio-wrapper {
+        color: #fff;
+    }
+    .ant-radio-inner {
+        background-color: #9e9d9d;
+        border-color: #3adb70 !important;
+        &::after {
+            background-color: #09f056;
+        }
+    }
+    &.is-checked label span {
+        text-decoration: line-through;
+    }
+    &__info {
+        margin-bottom: 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 13px;
+        li {
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        span {
+            font-size: 12px;
+            color: #fff;
+            margin-left: 10px;
+        }
+    }
+    &__helpers {
+        opacity: 0;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.2s ease-in-out;
+    }
+}

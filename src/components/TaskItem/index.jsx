@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
+import "moment/locale/ru";
 import { useDispatch } from "react-redux";
 import { Radio, message } from "antd";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
-import moment from "moment";
-import "moment/locale/ru";
-
 import { removeTask, updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
+moment.locale("ru");
 
 export default function TaskItem({ id, title, isCompleted, created, finished }) {
-    moment.locale("ru");
+
     const dispatch = useDispatch();
     const [isChecked, setIsChecked] = useState(isCompleted);
     const [isChange, setIsChange] = useState(false);
@@ -32,15 +32,25 @@ export default function TaskItem({ id, title, isCompleted, created, finished }) 
 
 
     return (
-        <div className="col">
+        <section className="col">
             <div className={`task-add ${isChecked ? "is-checked" : ""} ${isChange ? "is-change" : ""}`}>
                 {!isChange ?
-                    <Radio checked={isChecked} value={isChecked} onClick={checkHandler}>{title}</Radio> :
-                    <InputChange id={id} title={title} setIsChange={setIsChange} />}
-                <div className="task-add__info mt-2">
-                    <p className="mb-1">Созданно: <span>{created}</span></p>
-                    {finished !== null && <p>Завершено: <span>{finished}</span></p>}
-                </div>
+                    <Radio
+                        checked={isChecked}
+                        value={isChecked}
+                        onClick={checkHandler}>
+                        {title}
+                    </Radio>
+                    :
+                    <InputChange
+                        id={id}
+                        title={title}
+                        setIsChange={setIsChange}
+                    />}
+                <ul className="task-add__info mt-2">
+                    <li className="color-orange">Создано: <span>{created}</span></li>
+                    {finished !== null && <li className="color-green">Завершено: <span>{finished}</span></li>}
+                </ul>
                 <div className="task-add__helpers">
                     <div className="ico-lg mx-1" onClick={() => setIsChange(!isChange)}>
                         <EditFilled />
@@ -50,7 +60,7 @@ export default function TaskItem({ id, title, isCompleted, created, finished }) 
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
