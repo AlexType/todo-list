@@ -30,7 +30,6 @@ export default function TaskItem({ id, title, isCompleted, created, finished }) 
         message.warning("Задача удалена");
     };
 
-
     return (
         <section className="col">
             <div className={`task-add ${isChecked ? "is-checked" : ""} ${isChange ? "is-change" : ""}`}>

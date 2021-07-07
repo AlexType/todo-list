@@ -23,7 +23,7 @@ export default function TasksList({ tasks }) {
                         image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
                         imageStyle={{ height: 160 }}
                         description={<span>У вас пока нет задач</span>} >
-                        <Button type="primary" onClick={() => router.push("/add-task")}>
+                        <Button className="btn-success" onClick={() => router.push("/add-task")}>
                             Создать задачу
                         </Button>
                     </Empty>

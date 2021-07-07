@@ -7,17 +7,14 @@ import "moment/locale/ru";
 import { addTask } from "../../redux/actions/taskActions";
 
 export default function TaskAdd() {
+
     moment.locale("ru");
+
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
 
-    const success = () => {
-        message.success("Задача добавленна");
-    };
-
-    const error = () => {
-        message.error("Заполните поле");
-    };
+    const success = () => message.success("Задача добавленна");
+    const error = () => message.error("Заполните поле");
 
     const addHandler = () => {
         if (title.length) {
@@ -34,9 +31,7 @@ export default function TaskAdd() {
         else error();
     };
 
-    const clearHandler = () => {
-        setTitle("");
-    };
+    const clearHandler = () => setTitle("");
 
     return (
         <div>
@@ -47,10 +42,10 @@ export default function TaskAdd() {
             </div>
             <div className="row mt-4">
                 <div className="col-auto">
-                    <Button type="primary" onClick={addHandler}>Добавить</Button>
+                    <Button className="btn-success" onClick={addHandler}>Добавить</Button>
                 </div>
                 <div className="col-auto">
-                    <Button type="danger" onClick={clearHandler}>Очистить</Button>
+                    <Button className="btn-cencel" onClick={clearHandler}>Очистить</Button>
                 </div>
             </div>
         </div>

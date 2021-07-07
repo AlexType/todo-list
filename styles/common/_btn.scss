@@ -1,0 +1,26 @@
+%btn {
+    font-weight: 500;
+    color: #fff;
+}
+
+.btn-success {
+    @extend %btn;
+    background-color: #7ba89a;
+    &:active,
+    &:focus,
+    &:hover {
+        border-color: #7ba89a;
+        color: #7ba89a;
+    }
+}
+
+.btn-cencel {
+    @extend %btn;
+    background-color: #6e6c78;
+    &:active,
+    &:focus,
+    &:hover {
+        border-color: #6e6c78;
+        color: #6e6c78;
+    }
+}

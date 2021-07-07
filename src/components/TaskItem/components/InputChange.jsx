@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { Input, Button } from "antd";
 import { updateTitleTask } from "../../../redux/actions/taskActions";
 
@@ -22,10 +22,10 @@ export default function InputChange({ id, title, setIsChange }) {
             />
             <div className="row mt-2">
                 <div className="col-auto">
-                    <Button type="primary" onClick={updateTitleHandler}>Сохранить</Button>
+                    <Button className="btn-success" onClick={updateTitleHandler}>Сохранить</Button>
                 </div>
                 <div className="col-auto">
-                    <Button type="danger" onClick={() => setIsChange(false)}>Отменить</Button>
+                    <Button className="btn-cencel" onClick={() => setIsChange(false)}>Отменить</Button>
                 </div>
             </div>
         </div>

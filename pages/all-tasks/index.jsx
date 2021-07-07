@@ -22,14 +22,14 @@ export default function AllTasks() {
         <div className="container">
             <h1 className="title-page mb-4">Все задачи</h1>
             <TasksList tasks={tasks} />
-            <Button className="mt-4" type="primary" onClick={showModal}>
+            <Button className="btn-success mt-4" onClick={showModal}>
                 Добавить задачу
             </Button>
             <Modal
                 title="Быстрое добавление"
                 visible={visible}
                 footer={[
-                    <Button key="submit" type="primary" onClick={handleCancel}>
+                    <Button key="submit" className="btn-success" onClick={handleCancel}>
                         Закрыть
                     </Button>
                 ]}
