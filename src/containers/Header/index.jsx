@@ -5,7 +5,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import styles from "./Header.module.scss";
 
 const Header = () => {
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     return (
         <header className={styles.header}>

@@ -6,10 +6,10 @@ const initialState = typeof window !== "undefined" && localStorage.getItem("redu
         tasksLength: 1,
         tasks: [
             {
-                id: 0,
-                isCompleted: true,
+                id: "0",
+                isCompleted: false,
                 title: "Написать Todo List",
-                created: "2021-07-07, 20:25:09",
+                created: "2021-07-06, 08:25:09",
                 finished: null
             }
         ]
