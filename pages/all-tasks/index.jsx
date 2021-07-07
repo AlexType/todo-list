@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux"
-import { Modal, Button } from 'antd';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Modal, Button } from "antd";
 import TasksList from "../../src/components/TasksList";
 import TaskAdd from "../../src/components/TaskAdd";
 
@@ -37,5 +37,5 @@ export default function AllTasks() {
                 <TaskAdd />
             </Modal>
         </div>
-    )
+    );
 }

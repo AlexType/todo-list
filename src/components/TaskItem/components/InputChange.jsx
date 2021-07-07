@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { Input, Button } from 'antd';
-import { updateTitleTask } from '../../../redux/actions/taskActions';
+import { Input, Button } from "antd";
+import { updateTitleTask } from "../../../redux/actions/taskActions";
 
 export default function InputChange({ id, title, setIsChange }) {
 
@@ -28,5 +29,11 @@ export default function InputChange({ id, title, setIsChange }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
+InputChange.propTypes = {
+    id: PropTypes.string,
+    title: PropTypes.string,
+    setIsChange: PropTypes.func,
+};

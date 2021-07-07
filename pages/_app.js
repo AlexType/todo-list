@@ -1,8 +1,10 @@
-import { Provider } from 'react-redux';
-import { store } from '../src/redux/store';
-import Header from '../src/containers/Header'
-import Footer from '../src/containers/Footer'
-import '../styles/main.scss'
+import React from "react";
+import PropTypes from "prop-types";
+import { Provider } from "react-redux";
+import { store } from "../src/redux/store";
+import Header from "../src/containers/Header";
+import Footer from "../src/containers/Footer";
+import "../styles/main.scss";
 
 function MyApp({ Component, pageProps }) {
 
@@ -14,7 +16,12 @@ function MyApp({ Component, pageProps }) {
             </main>
             <Footer />
         </Provider >
-    )
+    );
 }
 
-export default MyApp
+export default MyApp;
+
+MyApp.propTypes = {
+    Component: PropTypes.any,
+    pageProps: PropTypes.any,
+};

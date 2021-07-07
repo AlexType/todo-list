@@ -1,3 +1,4 @@
+import React from "react";
 import TaskAdd from "../../src/components/TaskAdd";
 
 export default function AddTask() {
@@ -6,5 +7,5 @@ export default function AddTask() {
             <h2 className="title mb-3">Добавить задачу</h2>
             <TaskAdd />
         </div>
-    )
+    );
 }

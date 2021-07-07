@@ -1,20 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Input, Button, message } from 'antd';
-import { nanoid } from 'nanoid';
+import { Input, Button, message } from "antd";
+import { nanoid } from "nanoid";
+import moment from "moment";
+import "moment/locale/ru";
 import { addTask } from "../../redux/actions/taskActions";
 
 export default function TaskAdd() {
-
+    moment.locale("ru");
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState("");
 
     const success = () => {
-        message.success('Задача добавленна');
+        message.success("Задача добавленна");
     };
 
     const error = () => {
-        message.error('Заполните поле');
+        message.error("Заполните поле");
     };
 
     const addHandler = () => {
@@ -22,7 +24,9 @@ export default function TaskAdd() {
             dispatch(addTask({
                 id: nanoid(),
                 title,
-                isCompleted: false
+                isCompleted: false,
+                created: moment().format("YYYY-MM-DD, HH:mm:ss"),
+                finished: null
             }));
             clearHandler();
             success();
@@ -31,7 +35,7 @@ export default function TaskAdd() {
     };
 
     const clearHandler = () => {
-        setTitle('');
+        setTitle("");
     };
 
     return (
@@ -50,5 +54,5 @@ export default function TaskAdd() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

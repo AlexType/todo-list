@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { useState } from 'react';
-import { Button, Drawer } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
-import styles from './Header.module.scss';
+import React, { useState } from "react";
+import Link from "next/link";
+import { Drawer } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import styles from "./Header.module.scss";
 
 const Header = () => {
     const [visible, setVisible] = useState(true);
@@ -24,7 +24,7 @@ const Header = () => {
             </div>
             <Drawer
                 title="TodoList"
-                placement='left'
+                placement="left"
                 closable={() => setVisible(true)}
                 onClose={() => setVisible(false)}
                 visible={visible}
@@ -48,7 +48,7 @@ const Header = () => {
                 </div>
             </Drawer>
         </header>
-    )
-}
+    );
+};
 
 export default Header;
