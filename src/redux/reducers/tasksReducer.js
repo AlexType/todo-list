@@ -2,7 +2,13 @@ import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_TITLE_TASK } from 
 
 const initialState = {
     tasksLength: 1,
-    tasks: []
+    tasks: [
+        {
+            id: 0,
+            isCompleted: true,
+            title: 'Написать Todo List',
+        }
+    ]
 }
 
 export const tasksReducer = (state = initialState, action) => {

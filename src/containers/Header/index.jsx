@@ -1,30 +1,20 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { useState } from 'react';
+import { Button, Drawer } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 import styles from './Header.module.scss';
 
 const Header = () => {
+    const [visible, setVisible] = useState(true);
 
     return (
         <header className={styles.header}>
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col">
-                        <div className="row">
-                            <div className="col-auto">
-                                <Link href="/">
-                                    <a className={styles.link}>Главная</a>
-                                </Link>
-                            </div>
-                            <div className="col-auto">
-                                <Link href="/all-tasks">
-                                    <a className={styles.link}>Задачи</a>
-                                </Link>
-                            </div>
-                            <div className="col-auto">
-                                <Link href="/add-task">
-                                    <a className={styles.link}>Добавить</a>
-                                </Link>
-                            </div>
-                        </div>
+                        <button className="ico-dark" onClick={() => setVisible(true)}>
+                            <MenuOutlined />
+                        </button>
                     </div>
                     <div className="col-auto">
                         <p className={styles.logo}>TodoList</p>
@@ -32,6 +22,31 @@ const Header = () => {
                     <div className="col"></div>
                 </div>
             </div>
+            <Drawer
+                title="TodoList"
+                placement='left'
+                closable={() => setVisible(true)}
+                onClose={() => setVisible(false)}
+                visible={visible}
+            >
+                <div className="row row-cols-1 gy-3">
+                    <div className="col">
+                        <Link href="/">
+                            <a className={styles.link}>Главная</a>
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link href="/all-tasks">
+                            <a className={styles.link}>Задачи</a>
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link href="/add-task">
+                            <a className={styles.link}>Добавить</a>
+                        </Link>
+                    </div>
+                </div>
+            </Drawer>
         </header>
     )
 }

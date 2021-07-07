@@ -5,6 +5,7 @@ import Footer from '../src/containers/Footer'
 import '../styles/main.scss'
 
 function MyApp({ Component, pageProps }) {
+
     return (
         <Provider store={store}>
             <Header />
@@ -12,7 +13,7 @@ function MyApp({ Component, pageProps }) {
                 <Component {...pageProps} />
             </main>
             <Footer />
-        </Provider>
+        </Provider >
     )
 }
 

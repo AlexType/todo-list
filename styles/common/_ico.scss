@@ -1,15 +1,32 @@
-.ico-lg {
+%btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+.ico-lg {
+    @extend %btn;
     padding: 8px;
     cursor: pointer;
     font-size: 18px;
     border-radius: 3px;
-    transition: 0.2s ease-in-out;
     &:hover {
         color: #ffffff;
         background: #1e1e1ed8;
+        box-shadow: 0 0 10px #1e1e1e77;
+    }
+}
+.ico-dark {
+    @extend %btn;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 3px;
+    color: #ffffff;
+    background: #1e1e1ed8;
+    &:hover {
         box-shadow: 0 0 10px #1e1e1e77;
     }
 }
