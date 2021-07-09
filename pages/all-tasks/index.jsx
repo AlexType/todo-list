@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import { useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import TasksList from "../../src/components/TasksList";
@@ -11,6 +12,9 @@ export default function AllTasks() {
 
     return (
         <div className="container">
+            <Head>
+                <title>Все задачи</title>
+            </Head>
             <h1 className="title-page mb-4">Все задачи</h1>
             <TasksList tasks={tasks} />
             <Button className="btn-success mt-4" onClick={() => setVisible(true)}>

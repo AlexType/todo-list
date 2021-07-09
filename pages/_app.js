@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
@@ -14,6 +15,9 @@ function MyApp({ Component, pageProps }) {
     return (
         <ConfigProvider locale={locale}>
             <Provider store={store}>
+                <Head>
+                    <title>TodoList</title>
+                </Head>
                 <Header />
                 <main className="py-4">
                     <Component {...pageProps} />
