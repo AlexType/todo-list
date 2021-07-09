@@ -3,24 +3,19 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { Radio, message } from "antd";
 import moment from "moment";
-import "moment/locale/ru";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import { removeTask, updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
 
-export default function TaskItem({ id, title, isCompleted, created, finished }) {
+export default function TaskItem({ id, title, isCompleted, created, finished, deadline }) {
 
     const dispatch = useDispatch();
     const [isChecked, setIsChecked] = useState(isCompleted);
     const [isChange, setIsChange] = useState(false);
 
     useEffect(() => {
-        moment.locale("ru");
-    }, []);
-
-    useEffect(() => {
         dispatch(updateCompletedTask(id, isChecked));
-        dispatch(updateFinishedTask(id, isChecked ? moment().format("YYYY-MM-DD, HH:mm:ss") : null));
+        dispatch(updateFinishedTask(id, isChecked ? moment() : null));
     }, [isChecked]);
 
     const checkHandler = () => {
@@ -48,10 +43,12 @@ export default function TaskItem({ id, title, isCompleted, created, finished }) 
                         id={id}
                         title={title}
                         setIsChange={setIsChange}
+                        deadline={deadline === null ? moment() : moment(deadline)}
                     />}
                 <ul className="task-add__info mt-2">
-                    <li className="color-orange">Создано: <span>{created}</span></li>
-                    {finished !== null && <li className="color-green">Завершено: <span>{finished}</span></li>}
+                    <li className="color-orange">Создано: <span>{moment(new Date(created)).format("DD.MM.YYYY")}</span></li>
+                    {deadline !== null && <li className="color-blue">Завершить: <span>{moment(new Date(deadline)).format("DD.MM.YYYY")}</span></li>}
+                    {finished !== null && <li className="color-green">Завершено: <span>{moment(new Date(finished)).format("DD.MM.YYYY")}</span></li>}
                 </ul>
                 <div className="task-add__helpers">
                     <div className="ico-lg mx-1" onClick={() => setIsChange(!isChange)}>
@@ -71,5 +68,6 @@ TaskItem.propTypes = {
     title: PropTypes.string,
     isCompleted: PropTypes.bool,
     created: PropTypes.any,
-    finished: PropTypes.any
+    finished: PropTypes.any,
+    deadline: PropTypes.any
 };

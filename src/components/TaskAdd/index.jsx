@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Input, Button, message } from "antd";
+import { Input, DatePicker, Button, message } from "antd";
 import { nanoid } from "nanoid";
 import moment from "moment";
-import "moment/locale/ru";
 import { addTask } from "../../redux/actions/taskActions";
 
 export default function TaskAdd() {
 
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
+    const [datePicker, setDatePicker] = useState(null);
 
-    useEffect(() => {
-        moment.locale("ru");
-    }, []);
+    const onChangeDatePicker = (date) => {
+        setDatePicker(date);
+    };
+
+    const disabledDate = (current) => {
+        return current && current < moment().startOf("day");
+    };
 
     const addHandler = () => {
         if (title.length) {
@@ -21,10 +25,12 @@ export default function TaskAdd() {
                 id: nanoid(),
                 title,
                 isCompleted: false,
-                created: moment().format("YYYY-MM-DD, HH:mm:ss"),
+                created: moment(),
+                deadline: datePicker,
                 finished: null
             }));
             setTitle("");
+            setDatePicker(null);
             message.success("Задача успешно добавленна!");
         }
         else message.error("Вы не ввели название задачи");
@@ -35,6 +41,14 @@ export default function TaskAdd() {
             <div className="row gy-3">
                 <div className="col-12">
                     <Input placeholder="Название" value={title} onChange={e => setTitle(e.target.value)} />
+                </div>
+                <div className="col-12">
+                    <DatePicker
+                        value={datePicker}
+                        onChange={onChangeDatePicker}
+                        disabledDate={disabledDate}
+                        format={"DD.MM.YYYY"}
+                    />
                 </div>
             </div>
             <div className="row mt-4">

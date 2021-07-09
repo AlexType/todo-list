@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
+import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_DEADLINE, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
 
 export const addTask = (task) => {
     return {
@@ -31,6 +31,13 @@ export const updateCompletedTask = (id, isCompleted) => {
 export const updateFinishedTask = (id, date) => {
     return {
         type: UPDATE_FINISHED_TASK,
+        payload: { id, date }
+    };
+};
+
+export const updateDeadline = (id, date) => {
+    return {
+        type: UPDATE_DEADLINE,
         payload: { id, date }
     };
 };

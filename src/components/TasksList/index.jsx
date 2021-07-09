@@ -19,6 +19,7 @@ export default function TasksList({ tasks }) {
                         isCompleted={item.isCompleted}
                         created={item.created}
                         finished={item.finished}
+                        deadline={item.deadline}
                     />)
                     :
                     <Empty

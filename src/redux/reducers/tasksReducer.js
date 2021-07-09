@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
+import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_DEADLINE, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
 
 let initialState = {
     tasksLength: 0,
@@ -41,6 +41,13 @@ export const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map((task) => task.id === action.payload.id ? { ...task, finished: action.payload.date } : task)
+            };
+        }
+
+        case UPDATE_DEADLINE: {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.payload.id ? { ...task, deadline: action.payload.date } : task)
             };
         }
 
