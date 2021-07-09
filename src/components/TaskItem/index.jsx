@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
-import "moment/locale/ru";
 import { useDispatch } from "react-redux";
 import { Radio, message } from "antd";
+import moment from "moment";
+import "moment/locale/ru";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import { removeTask, updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
-moment.locale("ru");
 
 export default function TaskItem({ id, title, isCompleted, created, finished }) {
 
     const dispatch = useDispatch();
     const [isChecked, setIsChecked] = useState(isCompleted);
     const [isChange, setIsChange] = useState(false);
+
+    useEffect(() => {
+        moment.locale("ru");
+    }, []);
 
     useEffect(() => {
         dispatch(updateCompletedTask(id, isChecked));

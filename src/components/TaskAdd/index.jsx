@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Input, Button, message } from "antd";
 import { nanoid } from "nanoid";
@@ -8,13 +8,12 @@ import { addTask } from "../../redux/actions/taskActions";
 
 export default function TaskAdd() {
 
-    moment.locale("ru");
-
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
 
-    const success = () => message.success("Задача добавленна");
-    const error = () => message.error("Заполните поле");
+    useEffect(() => {
+        moment.locale("ru");
+    }, []);
 
     const addHandler = () => {
         if (title.length) {
@@ -25,13 +24,11 @@ export default function TaskAdd() {
                 created: moment().format("YYYY-MM-DD, HH:mm:ss"),
                 finished: null
             }));
-            clearHandler();
-            success();
+            setTitle("");
+            message.success("Задача успешно добавленна!");
         }
-        else error();
+        else message.error("Вы не ввели название задачи");
     };
-
-    const clearHandler = () => setTitle("");
 
     return (
         <div>
@@ -45,7 +42,7 @@ export default function TaskAdd() {
                     <Button className="btn-success" onClick={addHandler}>Добавить</Button>
                 </div>
                 <div className="col-auto">
-                    <Button className="btn-cencel" onClick={clearHandler}>Очистить</Button>
+                    <Button className="btn-cencel" onClick={() => setTitle("")}>Очистить</Button>
                 </div>
             </div>
         </div>

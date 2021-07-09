@@ -1,19 +1,9 @@
 import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
 
-const initialState = typeof window !== "undefined" && localStorage.getItem("redux-state") ?
-    JSON.parse(localStorage.getItem("redux-state")).tasks :
-    {
-        tasksLength: 1,
-        tasks: [
-            {
-                id: "0",
-                isCompleted: false,
-                title: "Написать Todo List",
-                created: "2021-07-06, 08:25:09",
-                finished: null
-            }
-        ]
-    };
+let initialState = {
+    tasksLength: 0,
+    tasks: []
+};
 
 export const tasksReducer = (state = initialState, action) => {
     switch (action.type) {

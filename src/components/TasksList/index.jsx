@@ -5,9 +5,11 @@ import { useRouter } from "next/router";
 import TaskItem from "../TaskItem";
 
 export default function TasksList({ tasks }) {
+
     const router = useRouter();
+
     return (
-        <div className="row row-cols-1 gy-3">
+        <article className="row row-cols-1 gy-3">
             {
                 tasks.length ?
                     tasks.map(item => <TaskItem
@@ -28,7 +30,7 @@ export default function TasksList({ tasks }) {
                         </Button>
                     </Empty>
             }
-        </div>
+        </article>
     );
 }
 
