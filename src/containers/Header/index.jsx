@@ -32,17 +32,17 @@ const Header = () => {
                 <div className="row row-cols-1 gy-3">
                     <div className="col">
                         <Link href="/">
-                            <a className="header__link">Главная</a>
+                            <a className="header__link" onClick={() => setVisible(false)}>Главная</a>
                         </Link>
                     </div>
                     <div className="col">
                         <Link href="/all-tasks">
-                            <a className="header__link">Задачи</a>
+                            <a className="header__link" onClick={() => setVisible(false)}>Задачи</a>
                         </Link>
                     </div>
                     <div className="col">
                         <Link href="/add-task">
-                            <a className="header__link">Добавить</a>
+                            <a className="header__link" onClick={() => setVisible(false)}>Добавить</a>
                         </Link>
                     </div>
                 </div>
