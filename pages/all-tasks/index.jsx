@@ -24,11 +24,7 @@ export default function AllTasks() {
                 title="Быстрое добавление"
                 visible={visible}
                 onCancel={() => setVisible(false)}
-                footer={[
-                    <Button key="submit" className="btn-success" onClick={() => setVisible(false)}>
-                        Готово
-                    </Button>
-                ]}
+                footer={null}
             >
                 <TaskAdd />
             </Modal>
