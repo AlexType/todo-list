@@ -1,10 +1,13 @@
-## Todo-List
+## Todo-List using SSR
 
-used: 
+Used: 
 - next.js
-- redux
+- react
 - react hooks
-- react-bootstrap
+- redux
+- bootstrap grid
+- antd components
+- moment.js
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
