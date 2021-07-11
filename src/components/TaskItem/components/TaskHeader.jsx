@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { Tooltip, DatePicker } from "antd";
@@ -7,13 +7,8 @@ import { updateDeadline } from "../../../redux/actions/taskActions";
 
 export default function TaskHeader({ id, edit, remove, deadline, setIsChange }) {
 
-    const [calssAnimation, setCalssAnimation] = useState("");
     const [visibilityDatePicker, setVisibilityDatePicker] = useState(false);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        setCalssAnimation("show");
-    }, []);
 
     const disabledDate = (current) => {
         return current && current < moment().startOf("day");
@@ -26,7 +21,7 @@ export default function TaskHeader({ id, edit, remove, deadline, setIsChange }) 
     };
 
     return (
-        <div className={`task-item__header ${calssAnimation}`}>
+        <div className="task-item__header">
             <div className="row justify-content-between align-items-center">
                 <div className="col-auto">
                     <Tooltip placement="top" color="orange" title="Редактировать задачу">

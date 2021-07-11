@@ -13,7 +13,6 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
     const dispatch = useDispatch();
     const [checked, setChecked] = useState(isCompleted);
     const [isChange, setIsChange] = useState(false);
-    const [headerView, setHeaderView] = useState(false);
 
     const checkHandler = (bool) => {
         if (bool) message.success("Задача завершена");
@@ -31,21 +30,15 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
 
     return (
         <section className="col">
-            <div className={`task-item ${checked ? "is-checked" : ""} ${isChange ? "is-changing" : ""}`}>
-                {
-                    headerView &&
-                    <TaskHeader
-                        id={id}
-                        edit={() => setIsChange(!isChange)}
-                        remove={deleteHandler}
-                        setIsChange={setIsChange}
-                        deadline={deadline === null ? moment() : moment(deadline)}
-                    />
-                }
+            <div className={`task-item ${checked ? "is-checked" : ""}`}>
+                <TaskHeader
+                    id={id}
+                    edit={() => setIsChange(!isChange)}
+                    remove={deleteHandler}
+                    setIsChange={setIsChange}
+                    deadline={deadline === null ? moment() : moment(deadline)}
+                />
                 <div className="task-item__body">
-                    <Tooltip placement="bottom" color="orange" title="Управление">
-                        <i className="task-item__more bi bi-three-dots-vertical" onClick={() => setHeaderView(!headerView)}></i>
-                    </Tooltip>
                     {
                         isChange ?
                             <InputChange
@@ -65,8 +58,8 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
                 </div>
                 <TaskFooter
                     start={moment(new Date(created)).fromNow()}
-                    deadline={deadline ? moment(new Date(deadline)).endOf("day").fromNow() : null}
-                    end={finished ? moment(new Date(finished)).fromNow() : null}
+                    deadline={deadline ? moment(new Date(deadline)).endOf("day").fromNow() : "бессрочно"}
+                    end={finished ? moment(new Date(finished)).fromNow() : "в работе"}
                 />
             </div>
         </section>
