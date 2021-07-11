@@ -4,12 +4,12 @@
     align-items: center;
     border: none;
     transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .ico-lg {
     @extend %btn;
     padding: 8px;
-    cursor: pointer;
     font-size: 18px;
     border-radius: 3px;
     &:hover {
@@ -18,15 +18,25 @@
         box-shadow: 0 0 10px #1e1e1e77;
     }
 }
+
 .ico-dark {
     @extend %btn;
     padding: 8px;
-    cursor: pointer;
     font-size: 18px;
     border-radius: 3px;
     color: #ffffff;
     background: #1e1e1ed8;
     &:hover {
         box-shadow: 0 0 10px #1e1e1e77;
+    }
+}
+
+.ico-help {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-size: 18px;
+    color: #1e1e1e;
+    &:hover {
+        color: #e4414c;
     }
 }

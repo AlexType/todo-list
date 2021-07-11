@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { Radio, message } from "antd";
 import moment from "moment";
-import { EditFilled, DeleteFilled } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { Radio, Tooltip, message } from "antd";
 import { removeTask, updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
+import TaskHeader from "./components/TaskHeader";
+import TaskFooter from "./components/TaskFooter";
 
 export default function TaskItem({ id, title, isCompleted, created, finished, deadline }) {
 
     const dispatch = useDispatch();
-    const [isChecked, setIsChecked] = useState(isCompleted);
+    const [checked, setChecked] = useState(isCompleted);
     const [isChange, setIsChange] = useState(false);
+    const [headerView, setHeaderView] = useState(false);
 
     const checkHandler = (bool) => {
         if (bool) message.success("Задача завершена");
         else message.warning("Задача востановлена");
 
-        setIsChecked(bool);
+        setChecked(bool);
         dispatch(updateCompletedTask(id, bool));
         dispatch(updateFinishedTask(id, bool ? moment() : null));
     };
@@ -29,34 +31,43 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
 
     return (
         <section className="col">
-            <div className={`task-add ${isChecked ? "is-checked" : ""} ${isChange ? "is-change" : ""}`}>
-                {!isChange ?
-                    <Radio
-                        checked={isChecked}
-                        value={isChecked}
-                        onClick={() => checkHandler(!isChecked)}>
-                        {title}
-                    </Radio>
-                    :
-                    <InputChange
+            <div className={`task-item ${checked ? "is-checked" : ""} ${isChange ? "is-changing" : ""}`}>
+                {
+                    headerView &&
+                    <TaskHeader
                         id={id}
-                        title={title}
+                        edit={() => setIsChange(!isChange)}
+                        remove={deleteHandler}
                         setIsChange={setIsChange}
                         deadline={deadline === null ? moment() : moment(deadline)}
-                    />}
-                <ul className="task-add__info mt-2">
-                    <li className="color-orange">Создано: <span>{moment(new Date(created)).fromNow()}</span></li>
-                    {deadline !== null && <li className="color-blue">Завершить: <span>{moment(new Date(deadline)).endOf("day").fromNow()}</span></li>}
-                    {finished !== null && <li className="color-green">Завершено: <span>{moment(new Date(finished)).fromNow()}</span></li>}
-                </ul>
-                <div className="task-add__helpers">
-                    <div className="ico-lg mx-1" onClick={() => setIsChange(!isChange)}>
-                        <EditFilled />
-                    </div>
-                    <div className="ico-lg" onClick={deleteHandler} >
-                        <DeleteFilled />
-                    </div>
+                    />
+                }
+                <div className="task-item__body">
+                    <Tooltip placement="bottom" color="orange" title="Управление">
+                        <i className="task-item__more bi bi-three-dots-vertical" onClick={() => setHeaderView(!headerView)}></i>
+                    </Tooltip>
+                    {
+                        isChange ?
+                            <InputChange
+                                id={id}
+                                title={title}
+                                setIsChange={setIsChange}
+                                deadline={deadline === null ? moment() : moment(deadline)}
+                            />
+                            :
+                            <Radio
+                                checked={checked}
+                                value={checked}
+                                onClick={() => checkHandler(!checked)}>
+                                {title}
+                            </Radio>
+                    }
                 </div>
+                <TaskFooter
+                    start={moment(new Date(created)).fromNow()}
+                    deadline={deadline ? moment(new Date(deadline)).endOf("day").fromNow() : null}
+                    end={finished ? moment(new Date(finished)).fromNow() : null}
+                />
             </div>
         </section>
     );

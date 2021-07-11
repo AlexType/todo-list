@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import { Input, DatePicker, Button } from "antd";
+import { Input, DatePicker } from "antd";
 import { updateDeadline, updateTitleTask } from "../../../redux/actions/taskActions";
 
 export default function InputChange({ id, title, setIsChange, deadline }) {
@@ -28,14 +28,16 @@ export default function InputChange({ id, title, setIsChange, deadline }) {
     return (
         <div>
             <div className="row">
-                <div className="col">
+                <div className="col-12 mb-2">
                     <Input
+                        className="task-item__input"
                         value={changeTitle}
                         onChange={e => setChangeTitle(e.target.value)}
                     />
                 </div>
-                <div className="col-auto">
+                <div className="col-12">
                     <DatePicker
+                        className="task-item__date-picker"
                         onChange={onChangeDatePicker}
                         disabledDate={disabledDate}
                         format={"DD.MM.YYYY"}
@@ -43,12 +45,16 @@ export default function InputChange({ id, title, setIsChange, deadline }) {
                     />
                 </div>
             </div>
-            <div className="row mt-2">
+            <div className="row mt-1 gx-2">
                 <div className="col-auto">
-                    <Button className="btn-success" onClick={update}>Сохранить</Button>
+                    <button className="task-item__btn done" onClick={update}>
+                        Сохранить
+                    </button>
                 </div>
                 <div className="col-auto">
-                    <Button className="btn-cencel" onClick={() => setIsChange(false)}>Отменить</Button>
+                    <button className="task-item__btn cancel" onClick={() => setIsChange(false)}>
+                        Отменить
+                    </button>
                 </div>
             </div>
         </div>

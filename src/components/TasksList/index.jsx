@@ -1,15 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Empty, Button } from "antd";
-import { useRouter } from "next/router";
+import { Empty } from "antd";
 import TaskItem from "../TaskItem";
 
 export default function TasksList({ tasks }) {
-
-    const router = useRouter();
-
     return (
-        <article className="row row-cols-1 gy-3">
+        <article className="row row-cols-4 gy-3">
             {
                 tasks.length ?
                     tasks.map(item => <TaskItem
@@ -22,14 +18,13 @@ export default function TasksList({ tasks }) {
                         deadline={item.deadline}
                     />)
                     :
-                    <Empty
-                        image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
-                        imageStyle={{ height: 160 }}
-                        description={<span>У вас пока нет задач</span>} >
-                        <Button className="btn-success" onClick={() => router.push("/add-task")}>
-                            Создать задачу
-                        </Button>
-                    </Empty>
+                    <div className="col-auto mx-auto">
+                        <Empty
+                            image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                            imageStyle={{ height: 160 }}
+                            description={<span className="mt-4">У вас пока нет задач</span>} >
+                        </Empty>
+                    </div>
             }
         </article>
     );
