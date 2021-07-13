@@ -37,6 +37,18 @@
     font-size: 18px;
     color: #1e1e1e;
     &:hover {
-        color: #e4414c;
+        color: $_red;
+    }
+}
+
+.ico-reference {
+    @extend %btn;
+    color: #ffffff;
+    font-size: 30px;
+    @include media-breakpoint-down(sm) {
+        font-size: 25px;
+    }
+    &:hover {
+        color: $_red;
     }
 }
