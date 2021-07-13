@@ -2,7 +2,16 @@ import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_DEADLINE, UPDATE_F
 
 let initialState = {
     tasksLength: 0,
-    tasks: []
+    tasks: [
+        {
+            id: "UX09123asd",
+            title: "Test title",
+            isCompleted: false,
+            created: new Date(),
+            deadline: null,
+            finished: null
+        }
+    ]
 };
 
 export const tasksReducer = (state = initialState, action) => {
