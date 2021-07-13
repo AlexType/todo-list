@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { useRouter } from "next/router";
 import { Tooltip, DatePicker } from "antd";
 import { useDispatch } from "react-redux";
 import { updateDeadline } from "../../../redux/actions/taskActions";
@@ -9,6 +10,7 @@ export default function TaskHeader({ id, edit, remove, deadline, setIsChange }) 
 
     const [visibilityDatePicker, setVisibilityDatePicker] = useState(false);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const disabledDate = (current) => {
         return current && current < moment().startOf("day");
@@ -27,12 +29,17 @@ export default function TaskHeader({ id, edit, remove, deadline, setIsChange }) 
                     <Tooltip placement="top" color="orange" title="Редактировать задачу">
                         <i className="bi bi-pencil-square" onClick={edit}></i>
                     </Tooltip>
-                    <Tooltip placement="top" color="orange" title="Редактировать deadline">
+                    <Tooltip placement="top" color="lime" title="Редактировать deadline">
                         <i className="bi bi-calendar3 ms-3" onClick={() => setVisibilityDatePicker(!visibilityDatePicker)}></i>
                     </Tooltip>
                 </div>
+                <div className="col">
+                    <p className="task-item__link" onClick={() => router.push("task/" + id)}>
+                        Подробно
+                    </p>
+                </div>
                 <div className="col-auto">
-                    <Tooltip placement="top" color="orange" title="Удалить задачу">
+                    <Tooltip placement="top" color="red" title="Удалить задачу">
                         <i className="bi bi-trash2" onClick={remove}></i>
                     </Tooltip>
                 </div>

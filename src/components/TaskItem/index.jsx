@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { Radio, Tooltip, message } from "antd";
+import { Radio, message } from "antd";
 import { removeTask, updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
 import TaskHeader from "./components/TaskHeader";
