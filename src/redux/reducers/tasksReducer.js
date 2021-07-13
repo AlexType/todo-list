@@ -1,14 +1,13 @@
 import { ADD_TASK, REMOVE_TASK, UPDATE_COMPLETED_TASK, UPDATE_DEADLINE, UPDATE_FINISHED_TASK, UPDATE_TITLE_TASK } from "../types";
 
 let initialState = {
-    tasksLength: 0,
     tasks: [
         {
             id: "UX09123asd",
-            title: "Test title",
+            title: "Написать TodoList",
             isCompleted: false,
-            created: new Date(),
-            deadline: null,
+            created: new Date("2021-07-01T00:00:00"),
+            deadline: new Date("2021-08-12T00:00:00"),
             finished: null
         }
     ]
