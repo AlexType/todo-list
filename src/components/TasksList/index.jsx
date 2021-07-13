@@ -9,13 +9,8 @@ export default function TasksList({ tasks }) {
             {
                 tasks.length ?
                     tasks.map(item => <TaskItem
-                        id={item.id}
                         key={item.id}
-                        title={item.title}
-                        isCompleted={item.isCompleted}
-                        created={item.created}
-                        finished={item.finished}
-                        deadline={item.deadline}
+                        task={item}
                     />)
                     :
                     <div className="col-auto mx-auto">

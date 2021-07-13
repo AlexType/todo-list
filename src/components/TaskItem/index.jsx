@@ -8,7 +8,9 @@ import TaskHeader from "./components/TaskHeader";
 import DateInfo from "../../containers/DateInfo/DateInfo";
 import TaskTitle from "../TaskTitle";
 
-export default function TaskItem({ id, title, isCompleted, created, finished, deadline }) {
+export default function TaskItem({ task }) {
+
+    const { id, created, finished, deadline } = task;
 
     const dispatch = useDispatch();
     const [isChange, setIsChange] = useState(false);
@@ -30,12 +32,9 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
                 />
                 <div className="task-item__body">
                     <TaskTitle
-                        id={id}
+                        task={task}
                         change={isChange}
                         setChange={setIsChange}
-                        title={title}
-                        isCompleted={isCompleted}
-                        deadline={deadline}
                     />
                 </div>
                 <DateInfo
@@ -50,10 +49,5 @@ export default function TaskItem({ id, title, isCompleted, created, finished, de
 }
 
 TaskItem.propTypes = {
-    id: PropTypes.string,
-    title: PropTypes.string,
-    isCompleted: PropTypes.bool,
-    created: PropTypes.any,
-    finished: PropTypes.any,
-    deadline: PropTypes.any
+    task: PropTypes.object
 };

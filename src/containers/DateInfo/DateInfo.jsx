@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function DateInfo({ start, deadline, end, className }) {
-
     return (
         <div className={`date-info ${className}`}>
             <ul>

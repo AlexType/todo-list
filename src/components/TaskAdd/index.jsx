@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import moment from "moment";
 import { useDispatch } from "react-redux";
 import { Input, DatePicker, Button, message } from "antd";
 import { nanoid } from "nanoid";
-import moment from "moment";
 import { addTask } from "../../redux/actions/taskActions";
 
 export default function TaskAdd() {
@@ -11,13 +11,7 @@ export default function TaskAdd() {
     const [title, setTitle] = useState("");
     const [datePicker, setDatePicker] = useState(null);
 
-    const onChangeDatePicker = (date) => {
-        setDatePicker(date);
-    };
-
-    const disabledDate = (current) => {
-        return current && current < moment().startOf("day");
-    };
+    const disabledDate = (current) => current && current < moment().startOf("day");
 
     const addHandler = () => {
         if (title.length) {
@@ -45,7 +39,7 @@ export default function TaskAdd() {
                 <div className="col-12">
                     <DatePicker
                         value={datePicker}
-                        onChange={onChangeDatePicker}
+                        onChange={date => setDatePicker(date)}
                         disabledDate={disabledDate}
                         format={"DD.MM.YYYY"}
                     />

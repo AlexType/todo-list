@@ -11,7 +11,6 @@ import Footer from "../src/containers/Footer";
 import "../styles/main.scss";
 
 function MyApp({ Component, pageProps }) {
-
     return (
         <ConfigProvider locale={locale}>
             <Provider store={store}>

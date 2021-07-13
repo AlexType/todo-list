@@ -4,7 +4,9 @@ import moment from "moment";
 import DateInfo from "../../containers/DateInfo/DateInfo";
 import TaskTitle from "../TaskTitle";
 
-export default function TaskInfo({ id, title, isCompleted, created, finished, deadline }) {
+export default function TaskInfo({ task }) {
+
+    const { id, created, finished, deadline } = task;
 
     const [isChange, setIsChange] = useState(false);
 
@@ -21,10 +23,7 @@ export default function TaskInfo({ id, title, isCompleted, created, finished, de
                     <div className="row">
                         <div className="col-auto">
                             <TaskTitle
-                                id={id}
-                                title={title}
-                                isCompleted={isCompleted}
-                                deadline={deadline}
+                                task={task}
                                 change={isChange}
                                 setChange={setIsChange}
                             />
@@ -44,10 +43,5 @@ export default function TaskInfo({ id, title, isCompleted, created, finished, de
 }
 
 TaskInfo.propTypes = {
-    id: PropTypes.string,
-    title: PropTypes.string,
-    isCompleted: PropTypes.bool,
-    created: PropTypes.any,
-    finished: PropTypes.any,
-    deadline: PropTypes.any,
+    task: PropTypes.object,
 };

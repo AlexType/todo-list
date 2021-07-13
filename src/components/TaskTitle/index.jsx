@@ -6,7 +6,9 @@ import { Radio, message } from "antd";
 import { updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
 
-export default function TaskTitle({ id, title, isCompleted, deadline, change, setChange }) {
+export default function TaskTitle({ task, change, setChange }) {
+
+    const { id, title, isCompleted, deadline } = task;
 
     const dispatch = useDispatch();
     const [checked, setChecked] = useState(isCompleted);
@@ -43,10 +45,7 @@ export default function TaskTitle({ id, title, isCompleted, deadline, change, se
 }
 
 TaskTitle.propTypes = {
-    id: PropTypes.string,
-    title: PropTypes.string,
-    isCompleted: PropTypes.bool,
-    deadline: PropTypes.any,
+    task: PropTypes.object,
     change: PropTypes.any,
     setChange: PropTypes.any
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -11,26 +11,16 @@ export default function Task() {
     const [task] = useSelector(state => state.tasks.tasks.filter(item => item.id === router.query.id));
 
     return (
-        <div className="container">
+        <Fragment>
             <Head>
                 <title>Таск</title>
             </Head>
-            <h1 className="title-page mb-4">Информация по задаче</h1>
-            <div className="description">
-                {
-                    task ?
-                        <TaskInfo
-                            id={task.id}
-                            title={task.title}
-                            isCompleted={task.isCompleted}
-                            created={task.created}
-                            deadline={task.deadline}
-                            finished={task.finished}
-                        />
-                        :
-                        <Skeleton active />
-                }
+            <div className="container">
+                <h1 className="title-page mb-4">Информация по задаче</h1>
+                <div className="description">
+                    {task ? <TaskInfo task={task} /> : <Skeleton active />}
+                </div>
             </div>
-        </div>
+        </Fragment>
     );
 }

@@ -10,19 +10,13 @@ export default function Filters({ setFilters }) {
                 <span>Все</span>
             </Menu.Item>
             <Menu.Item key="2" onClick={() => setFilters("finished")}>
-                <span>
-                    Выполненые
-                </span>
+                <span>Выполненые</span>
             </Menu.Item>
             <Menu.Item key="3" onClick={() => setFilters("active")}>
-                <span>
-                    Активные
-                </span>
+                <span>Активные</span>
             </Menu.Item>
             <Menu.Item key="4" onClick={() => setFilters("deadline")}>
-                <span>
-                    Просрочены
-                </span>
+                <span>Просрочены</span>
             </Menu.Item>
         </Menu>
     );
