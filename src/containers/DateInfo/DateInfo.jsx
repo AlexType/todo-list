@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function TaskFooter({ start, deadline, end }) {
+export default function DateInfo({ start, deadline, end, className }) {
 
     return (
-        <div className="task-item__footer">
+        <div className={`date-info ${className}`}>
             <ul>
                 <li className="start">
                     <i className="bi bi-check"></i>
@@ -23,8 +23,13 @@ export default function TaskFooter({ start, deadline, end }) {
     );
 }
 
-TaskFooter.propTypes = {
+DateInfo.propTypes = {
     start: PropTypes.any,
     deadline: PropTypes.any,
     end: PropTypes.any,
+    className: PropTypes.string,
+};
+
+DateInfo.defaultProps = {
+    className: ""
 };

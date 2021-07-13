@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import moment from "moment";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { Skeleton } from "antd";
+import TaskInfo from "../../src/components/TaskInfo";
 
 export default function Task() {
 
@@ -19,27 +19,14 @@ export default function Task() {
             <div className="description">
                 {
                     task ?
-                        <div>
-                            <div className="row">
-                                <div className="col">
-                                    <p className="description__title">Название: {task.title}</p>
-                                </div>
-                                <div className="col">
-                                    <p className="description__text">Статус: {task.isCompleted ? "завершено" : "выполняется"}</p>
-                                </div>
-                            </div>
-                            <div className="row mt-3">
-                                <div className="col-12">
-                                    <p className="description__text">Дата создания: {moment(task.created).format("DD.MM.YYYY, HH:mm:ss")}</p>
-                                </div>
-                                <div className="col-12">
-                                    <p className="description__text">Дата окончания: {task.finished ? moment(task.finished).format("DD.MM.YYYY, HH:mm:ss") : "-"}</p>
-                                </div>
-                                <div className="col-12">
-                                    <p className="description__text">Дата deadline: {task.deadline ? moment(task.deadline).format("DD.MM.YYYY, HH:mm:ss") : "-"}</p>
-                                </div>
-                            </div>
-                        </div>
+                        <TaskInfo
+                            id={task.id}
+                            title={task.title}
+                            isCompleted={task.isCompleted}
+                            created={task.created}
+                            deadline={task.deadline}
+                            finished={task.finished}
+                        />
                         :
                         <Skeleton active />
                 }

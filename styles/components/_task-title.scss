@@ -1,0 +1,58 @@
+.task-title {
+    &.is-checked .ant-radio-wrapper {
+        text-decoration: line-through;
+    }
+    &__input {
+        padding: 2px 10px;
+        text-decoration: underline;
+        border: none;
+        background: #e8e9e971;
+        &:hover {
+            background: #e8e9e9a1;
+        }
+    }
+    &__date-picker {
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        &.ant-picker-focused {
+            box-shadow: 0 0 0 3px rgba(228, 65, 76, 18%);
+        }
+        .ant-picker-input {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+        }
+        .ant-picker-suffix {
+            margin-right: 5px;
+            svg {
+                margin-top: -1px;
+                fill: #e4414c;
+            }
+        }
+        .ant-picker-clear {
+            right: 4px;
+        }
+        input {
+            color: #e4414c;
+            font-weight: 500;
+        }
+    }
+    .ant-radio-wrapper {
+        font-weight: 600;
+    }
+    .ant-radio-input:focus + .ant-radio-inner {
+        box-shadow: 0 0 0 3px rgba(228, 65, 76, 18%);
+    }
+    .ant-radio-inner {
+        background-color: #f8faf9;
+        border-color: #e4414c !important;
+        &::after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #e4414c;
+        }
+    }
+}

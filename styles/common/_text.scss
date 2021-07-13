@@ -1,21 +1,14 @@
 %title {
     font-weight: 700;
-    color: #fff;
 }
 
 .title-page {
     @extend %title;
+    color: #fff;
     font-size: 25px;
 }
 
-.color-orange {
-    color: #f3af44;
-}
-
-.color-green {
-    color: #3adb70;
-}
-
-.color-blue {
-    color: #50a7f8;
+.subtitle {
+    @extend %title;
+    font-size: 16px;
 }

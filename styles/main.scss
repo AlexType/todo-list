@@ -27,11 +27,13 @@
 @import "common/description";
 
 // components
+@import "components/task-title";
 @import "components/task-item";
 @import "components/filters";
 
 // containers
 @import "containers/header";
+@import "containers/date-info";
 
 // custom antd
 @import "antd/drawer";
