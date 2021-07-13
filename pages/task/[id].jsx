@@ -3,7 +3,7 @@ import Head from "next/head";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { Skeleton, Spin } from "antd";
+import { Skeleton } from "antd";
 
 export default function Task() {
 
