@@ -1,12 +1,15 @@
 {
   "name": "todo-list",
   "version": "0.1.0",
-  "main": "index.js",
+  "homepage": "https://alextype.github.io/todo-list/",
   "scripts": {
     "lint": "next lint",
     "start": "next start",
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "export": "next export && touch out/.nojekyll",
+    "build-ssg": "next build && next export && touch out/.nojekyll",
+    "deploy": "gh-pages -d out -t true"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
