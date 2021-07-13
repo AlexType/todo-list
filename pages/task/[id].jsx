@@ -3,7 +3,7 @@ import Head from "next/head";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { Fragment } from "react";
+import { Skeleton, Spin } from "antd";
 
 export default function Task() {
 
@@ -11,15 +11,15 @@ export default function Task() {
     const [task] = useSelector(state => state.tasks.tasks.filter(item => item.id === router.query.id));
 
     return (
-        <Fragment>
-            {
-                task ?
-                    <div className="container">
-                        <Head>
-                            <title>Таск</title>
-                        </Head>
-                        <h1 className="title-page mb-4">Информация по задаче</h1>
-                        <div className="description">
+        <div className="container">
+            <Head>
+                <title>Таск</title>
+            </Head>
+            <h1 className="title-page mb-4">Информация по задаче</h1>
+            <div className="description">
+                {
+                    task ?
+                        <div>
                             <div className="row">
                                 <div className="col">
                                     <p className="description__title">Название: {task.title}</p>
@@ -40,10 +40,10 @@ export default function Task() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    :
-                    <p>loading</p>
-            }
-        </Fragment>
+                        :
+                        <Skeleton active />
+                }
+            </div>
+        </div>
     );
 }
