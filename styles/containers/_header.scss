@@ -1,6 +1,7 @@
 .header {
-    padding: 15px 0;
-    background: #3b3b3d;
+    padding: 5px 0;
+    background: $_gray;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.651);
     &__link {
         font-size: 16px;
         font-weight: 600;

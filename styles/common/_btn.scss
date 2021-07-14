@@ -1,26 +1,28 @@
 %btn {
-    font-weight: 500;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: $_raduis;
+    transition: 0.2s ease-in-out;
+}
+
+%btn-ico {
+    @extend %btn;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3.5px;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+}
+
+.btn-ico-lignt {
+    @extend %btn-ico;
     color: #fff;
-}
-
-.btn-success {
-    @extend %btn;
-    background-color: #7ba89a;
-    &:active,
-    &:focus,
     &:hover {
-        border-color: #7ba89a;
-        color: #7ba89a;
-    }
-}
-
-.btn-cencel {
-    @extend %btn;
-    background-color: #6e6c78;
-    &:active,
-    &:focus,
-    &:hover {
-        border-color: #6e6c78;
-        color: #6e6c78;
+        color: #fff;
+        background: rgba(5, 5, 5, 0.356);
+        box-shadow: 0 0 4px 2px rgba(207, 207, 207, 0.384);
     }
 }
