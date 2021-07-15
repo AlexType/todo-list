@@ -1,5 +1,5 @@
-import React, {Fragment, useContext} from "react";
-import {LocaleContext} from "../src/context/LocaleContext";
+import React, { Fragment, useContext } from "react";
+import { LocaleContext } from "../src/context/LocaleContext";
 import Head from "next/head";
 
 export default function Home() {
