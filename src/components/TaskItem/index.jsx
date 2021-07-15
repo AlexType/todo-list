@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { message } from "antd";
 import { removeTask } from "../../redux/actions/taskActions";
 import TaskHeader from "./components/TaskHeader";
-import DateInfo from "../../containers/DateInfo/DateInfo";
+import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
 
 export default function TaskItem({ task }) {

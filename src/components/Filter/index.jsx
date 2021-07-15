@@ -2,20 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Dropdown, Menu } from "antd";
 
-export default function Filters({ setFilters }) {
+export default function Filter({ setFilter }) {
 
     const menu = (
         <Menu>
-            <Menu.Item key="1" onClick={() => setFilters(null)}>
+            <Menu.Item key="1" onClick={() => setFilter(null)}>
                 <span>Все</span>
             </Menu.Item>
-            <Menu.Item key="2" onClick={() => setFilters("finished")}>
+            <Menu.Item key="2" onClick={() => setFilter("finished")}>
                 <span>Выполненые</span>
             </Menu.Item>
-            <Menu.Item key="3" onClick={() => setFilters("active")}>
+            <Menu.Item key="3" onClick={() => setFilter("active")}>
                 <span>Активные</span>
             </Menu.Item>
-            <Menu.Item key="4" onClick={() => setFilters("deadline")}>
+            <Menu.Item key="4" onClick={() => setFilter("deadline")}>
                 <span>Просрочены</span>
             </Menu.Item>
         </Menu>
@@ -31,6 +31,6 @@ export default function Filters({ setFilters }) {
     );
 }
 
-Filters.propTypes = {
-    setFilters: PropTypes.func,
+Filter.propTypes = {
+    setFilter: PropTypes.func,
 };

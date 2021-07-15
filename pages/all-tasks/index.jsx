@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import TasksList from "../../src/components/TasksList";
 import TaskAdd from "../../src/components/TaskAdd";
-import Filters from "../../src/components/Filters";
+import Filter from "../../src/components/Filter";
 import useFilter from "../../src/hooks/filter.hook";
 
 export default function AllTasks() {
@@ -24,7 +24,7 @@ export default function AllTasks() {
                 <h1 className="title-page mb-4">Все задачи</h1>
                 <div className="row justify-content-end mb-4">
                     <div className="col-auto">
-                        <Filters setFilters={setFilters} />
+                        <Filter setFilters={setFilters} />
                     </div>
                 </div>
                 <TasksList tasks={filteredList(tasks, filters)} />

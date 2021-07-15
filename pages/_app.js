@@ -1,27 +1,31 @@
 import React from "react";
-import Head from "next/head";
 import PropTypes from "prop-types";
+import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
-import { ConfigProvider } from "antd";
+import { useRouter } from "next/router";
+import { LocaleContext } from "../src/context/LocaleContext";
+import momentLocale from "antd/lib/locale/ru_RU";
+import Header from "../src/components/Header";
+import en from "../src/locales/en.json";
+import ru from "../src/locales/ru.json";
 import "moment/locale/ru";
-import locale from "antd/lib/locale/ru_RU";
-import Header from "../src/containers/Header";
-import Footer from "../src/containers/Footer";
 import "../styles/main.scss";
 
 function MyApp({ Component, pageProps }) {
+
+    const router = useRouter();
+    const locale = router.locale === "en" ? en : ru;
+
     return (
-        <ConfigProvider locale={locale}>
-            <Provider store={store}>
-                <Head>
-                    <title>TodoList</title>
-                </Head>
-                <Header />
-                <main className="py-4">
-                    <Component {...pageProps} />
-                </main>
-                <Footer />
+        <ConfigProvider locale={momentLocale}>
+            <Provider store={store} >
+                <LocaleContext.Provider value={locale}>
+                    <Header />
+                    <main className="py-4">
+                        <Component {...pageProps} />
+                    </main>
+                </LocaleContext.Provider>
             </Provider >
         </ConfigProvider>
     );

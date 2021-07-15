@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import DateInfo from "../../containers/DateInfo/DateInfo";
+import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
 
 export default function TaskInfo({ task }) {

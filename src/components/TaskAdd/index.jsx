@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import moment from "moment";
 import { useDispatch } from "react-redux";
-import { Input, DatePicker, Button, message } from "antd";
 import { nanoid } from "nanoid";
+import { Input, DatePicker, Button, message } from "antd";
 import { addTask } from "../../redux/actions/taskActions";
+import moment from "moment";
 
 export default function TaskAdd() {
 
-    const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [datePicker, setDatePicker] = useState(null);
+    const dispatch = useDispatch();
 
     const disabledDate = (current) => current && current < moment().startOf("day");
 

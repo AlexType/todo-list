@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { Drawer } from "antd";
-import Search from "../../components/Search";
+import Link from "next/link";
+import Search from "../Search";
+import Locale from "../Locale";
 
 const Header = () => {
 
@@ -36,9 +37,7 @@ const Header = () => {
                                 </button>
                             </div>
                             <div className="col-auto">
-                                <button className="btn-ico-lignt">
-                                    <i className="bi bi-translate"></i>
-                                </button>
+                                <Locale />
                             </div>
                             <div className="col-auto">
                                 <Link href="https://github.com/AlexType">

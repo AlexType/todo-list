@@ -6,26 +6,31 @@ import styles from "./Search.module.scss";
 
 const Search = () => {
 
-    const [find, setFind] = useState("");
-    const ref = useRef();
+    const [searchText, setSearchText] = useState("");
     const tasks = useSelector(state => state.tasks.tasks);
-
-    const filterByTitle = item => find && item.title.toLowerCase().includes(find);
+    const ref = useRef();
 
     useEffect(() => {
-        const onClick = e => ref.current.contains(e.target) || setFind("");
+        const onClick = event => ref.current.contains(event.target) || setSearchText("");
         document.addEventListener("click", onClick);
 
         return () => document.removeEventListener("click", onClick);
     }, []);
 
+    const filterByTitle = item => {
+        searchText && item.title.toLowerCase().includes(searchText);
+    };
+
     return (
-        <div className={styles.search} ref={ref}>
+        <div
+            ref={ref}
+            className={styles.search}
+        >
             <Input.Search
                 className="input-search"
                 placeholder="Поиск"
-                value={find}
-                onChange={event => setFind(event.target.value.toLowerCase())}
+                value={searchText}
+                onChange={event => setSearchText(event.target.value.toLowerCase())}
                 style={{ width: 200 }}
             />
             <ul className={styles.list}>
@@ -33,7 +38,7 @@ const Search = () => {
                     tasks.filter(filterByTitle).map(item =>
                         <li className={styles.task} key={item.id}>
                             <Link href={`/task/${item.id}`}>
-                                <a className={styles.title} onClick={() => setFind("")}>
+                                <a className={styles.title} onClick={() => setSearchText("")}>
                                     {item.title}
                                 </a>
                             </Link>
