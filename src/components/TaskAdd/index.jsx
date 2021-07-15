@@ -1,22 +1,23 @@
 import React, { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
+import moment from "moment";
 import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
 import { Input, DatePicker, Button, message } from "antd";
 import { addTask } from "../../redux/actions/taskActions";
-import moment from "moment";
 import { LocaleContext } from "../../context/LocaleContext";
+import useDatePicker from "../../hooks/datePicker.hook";
 
 export default function TaskAdd() {
 
     const [title, setTitle] = useState("");
     const [datePicker, setDatePicker] = useState(null);
+    const { disabledDate } = useDatePicker();
     const locale = useContext(LocaleContext);
     const dispatch = useDispatch();
 
-    const disabledDate = (current) => current && current < moment().startOf("day");
-
-    const addHandler = () => {
-        if (title.length) {
+    const addTaskHandler = () => {
+        if (!title.length) message.error(locale.messages.notInputError);
+        else {
             dispatch(addTask({
                 id: nanoid(),
                 title,
@@ -29,7 +30,6 @@ export default function TaskAdd() {
             setDatePicker(null);
             message.success(locale.messages.addSuccess);
         }
-        else message.error(locale.messages.notInputError);
     };
 
     return (
@@ -52,7 +52,7 @@ export default function TaskAdd() {
             </div>
             <div className="row mt-4">
                 <div className="col-auto">
-                    <Button className="btn-success" onClick={addHandler}>
+                    <Button className="btn-success" onClick={addTaskHandler}>
                         {locale.events.add}
                     </Button>
                 </div>
