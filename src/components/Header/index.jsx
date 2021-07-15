@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Drawer } from "antd";
 import Link from "next/link";
 import Search from "../Search";
 import Locale from "../Locale";
-import {LocaleContext} from "../../context/LocaleContext";
+import { LocaleContext } from "../../context/LocaleContext";
 
 const Header = () => {
 
@@ -13,11 +13,11 @@ const Header = () => {
     return (
         <header className="header">
             <div className="container">
-                <div className="row align-items-center justify-content-between">
-                    <div className="col-sm-auto">
+                <div className="row align-items-center justify-content-between gx-3">
+                    <div className="col-auto">
                         <div className="row justify-content-between justify-content-sm-start align-items-center">
                             <div className="col-auto d-flex align-items-center">
-                                <button className="btn-ico-lignt me-4" onClick={() => setDrawerVisible(true)}>
+                                <button className="btn-ico-lignt me-3" onClick={() => setDrawerVisible(true)}>
                                     <i className="bi bi-grid-3x3-gap-fill"></i>
                                 </button>
                                 <Link href="/">
@@ -26,13 +26,13 @@ const Header = () => {
                                     </a>
                                 </Link>
                             </div>
-                            <div className="col-auto">
-                                <Search />
-                            </div>
                         </div>
                     </div>
-                    <div className="col-sm-auto mt-1 mt-sm-0">
-                        <div className="row justify-content-center justify-content-sm-end align-items-center">
+                    <div className="col-sm d-flex justify-content-center justify-content-sm-start mt-2 mt-sm-0 order-1 order-sm-0">
+                        <Search />
+                    </div>
+                    <div className="col-auto">
+                        <div className="row justify-content-center justify-content-sm-end align-items-center gx-3">
                             <div className="col-auto">
                                 <button className="btn-ico-lignt">
                                     <i className="bi bi-lightbulb-fill"></i>
