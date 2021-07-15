@@ -11,7 +11,7 @@ import Header from "../src/components/Header";
 import en from "../src/locales/en.json";
 import ru from "../src/locales/ru.json";
 import "moment/locale/ru";
-import "../styles/main.scss";
+import "../src/styles/main.scss";
 
 function MyApp({ Component, pageProps }) {
 
