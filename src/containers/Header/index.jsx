@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Drawer, Input } from "antd";
+import { Drawer } from "antd";
+import Search from "../../components/Search";
 
 const Header = () => {
 
     const [drawerVisible, setDrawerVisible] = useState(false);
-
-    const onSearch = value => console.log(value);
 
     return (
         <header className="header">
@@ -25,11 +24,7 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className="col-auto">
-                                <Input.Search
-                                    className="input-search"
-                                    placeholder="Поиск"
-                                    onSearch={onSearch}
-                                    style={{ width: 200 }} />
+                                <Search />
                             </div>
                         </div>
                     </div>
