@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Input } from "antd";
 import Link from "next/link";
 import styles from "./Search.module.scss";
-import {LocaleContext} from "../../context/LocaleContext";
+import { LocaleContext } from "../../context/LocaleContext";
 
 const Search = () => {
 
@@ -20,7 +20,7 @@ const Search = () => {
     }, []);
 
     const filterByTitle = item => {
-        searchText && item.title.toLowerCase().includes(searchText);
+        return searchText && item.title.toLowerCase().includes(searchText.toLowerCase());
     };
 
     return (
@@ -32,7 +32,7 @@ const Search = () => {
                 className="input-search"
                 placeholder={locale.words.search}
                 value={searchText}
-                onChange={event => setSearchText(event.target.value.toLowerCase())}
+                onChange={event => setSearchText(event.target.value)}
                 style={{ width: 200 }}
             />
             <ul className={styles.list}>
