@@ -1,14 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { useSelector } from "react-redux";
 import { Input } from "antd";
 import Link from "next/link";
 import styles from "./Search.module.scss";
+import {LocaleContext} from "../../context/LocaleContext";
 
 const Search = () => {
 
     const [searchText, setSearchText] = useState("");
     const tasks = useSelector(state => state.tasks.tasks);
     const ref = useRef();
+    const locale = useContext(LocaleContext);
 
     useEffect(() => {
         const onClick = event => ref.current.contains(event.target) || setSearchText("");
@@ -28,7 +30,7 @@ const Search = () => {
         >
             <Input.Search
                 className="input-search"
-                placeholder="Поиск"
+                placeholder={locale.words.search}
                 value={searchText}
                 onChange={event => setSearchText(event.target.value.toLowerCase())}
                 style={{ width: 200 }}

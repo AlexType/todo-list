@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { Radio, message } from "antd";
 import { updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
+import { LocaleContext } from "../../context/LocaleContext";
 
 export default function TaskTitle({ task, change, setChange }) {
 
@@ -12,10 +13,11 @@ export default function TaskTitle({ task, change, setChange }) {
 
     const dispatch = useDispatch();
     const [checked, setChecked] = useState(isCompleted);
+    const locale = useContext(LocaleContext);
 
     const checkHandler = (bool) => {
-        if (bool) message.success("Задача завершена");
-        else message.warning("Задача востановлена");
+        if (bool) message.success(locale.messages.isComplited);
+        else message.warning(locale.messages.isRestored);
 
         setChecked(bool);
         dispatch(updateCompletedTask(id, bool));

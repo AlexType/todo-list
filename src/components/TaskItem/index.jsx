@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { removeTask } from "../../redux/actions/taskActions";
 import TaskHeader from "./components/TaskHeader";
 import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
+import { LocaleContext } from "../../context/LocaleContext";
 
 export default function TaskItem({ task }) {
 
@@ -14,10 +15,11 @@ export default function TaskItem({ task }) {
 
     const dispatch = useDispatch();
     const [isChange, setIsChange] = useState(false);
+    const locale = useContext(LocaleContext);
 
     const deleteHandler = () => {
         dispatch(removeTask(id));
-        message.warning("Задача удалена");
+        message.warning(locale.messages.removeSuccess);
     };
 
     return (

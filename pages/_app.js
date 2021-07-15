@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
 import { useRouter } from "next/router";
 import { LocaleContext } from "../src/context/LocaleContext";
-import momentLocale from "antd/lib/locale/ru_RU";
+import momentRu from "antd/lib/locale/ru_RU";
+import momentEn from "antd/lib/locale/en_US";
 import Header from "../src/components/Header";
 import en from "../src/locales/en.json";
 import ru from "../src/locales/ru.json";
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     const locale = router.locale === "en" ? en : ru;
 
     return (
-        <ConfigProvider locale={momentLocale}>
+        <ConfigProvider locale={router.locale === "en" ? momentEn : momentRu}>
             <Provider store={store} >
                 <LocaleContext.Provider value={locale}>
                     <Header />

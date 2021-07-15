@@ -1,6 +1,42 @@
 {
     "words": {
         "search": "Search",
-        "save": "Save"
+        "save": "Save",
+        "open": "Open",
+        "name": "Name",
+        "filter": "filter"
+    },
+    "tooltips": {
+        "edit": "Edit task",
+        "deadline": "Edit deadline",
+        "delete": "Delete task"
+    },
+    "titles": {
+        "home": "Home",
+        "allTasks": "All tasks",
+        "addTask": "Add task"
+    },
+    "events": {
+        "addTask": "Add task",
+        "add": "Add",
+        "clear": "Clear"
+    },
+    "menu": {
+        "home": "Home",
+        "tasks": "Tasks",
+        "add": "Add"
+    },
+    "messages": {
+        "addSuccess": "Task added successfully",
+        "removeSuccess": "Task deleted",
+        "isComplited": "Task completed",
+        "isRestored": "Task restored",
+        "notInputError": "You did not enter the task name"
+    },
+    "filter": {
+        "all": "All",
+        "complited": "Complited",
+        "active": "Active",
+        "overdue": "Overdue"
     }
 }

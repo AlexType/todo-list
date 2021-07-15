@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { Drawer } from "antd";
 import Link from "next/link";
 import Search from "../Search";
 import Locale from "../Locale";
+import {LocaleContext} from "../../context/LocaleContext";
 
 const Header = () => {
 
     const [drawerVisible, setDrawerVisible] = useState(false);
+    const locale = useContext(LocaleContext);
 
     return (
         <header className="header">
@@ -67,17 +69,23 @@ const Header = () => {
                 <div className="row row-cols-1 gy-3">
                     <div className="col">
                         <Link href="/">
-                            <a className="header__link" onClick={() => setDrawerVisible(false)}>Главная</a>
+                            <a className="header__link" onClick={() => setDrawerVisible(false)}>
+                                {locale.menu.home}
+                            </a>
                         </Link>
                     </div>
                     <div className="col">
                         <Link href="/all-tasks">
-                            <a className="header__link" onClick={() => setDrawerVisible(false)}>Задачи</a>
+                            <a className="header__link" onClick={() => setDrawerVisible(false)}>
+                                {locale.menu.tasks}
+                            </a>
                         </Link>
                     </div>
                     <div className="col">
                         <Link href="/add-task">
-                            <a className="header__link" onClick={() => setDrawerVisible(false)}>Добавить</a>
+                            <a className="header__link" onClick={() => setDrawerVisible(false)}>
+                                {locale.menu.add}
+                            </a>
                         </Link>
                     </div>
                 </div>

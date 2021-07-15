@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import { Input, DatePicker, Button, message } from "antd";
 import { addTask } from "../../redux/actions/taskActions";
 import moment from "moment";
+import { LocaleContext } from "../../context/LocaleContext";
 
 export default function TaskAdd() {
 
     const [title, setTitle] = useState("");
     const [datePicker, setDatePicker] = useState(null);
+    const locale = useContext(LocaleContext);
     const dispatch = useDispatch();
 
     const disabledDate = (current) => current && current < moment().startOf("day");
@@ -25,16 +27,19 @@ export default function TaskAdd() {
             }));
             setTitle("");
             setDatePicker(null);
-            message.success("Задача успешно добавленна!");
+            message.success(locale.messages.addSuccess);
         }
-        else message.error("Вы не ввели название задачи");
+        else message.error(locale.messages.notInputError);
     };
 
     return (
         <div>
             <div className="row gy-3">
                 <div className="col-12">
-                    <Input placeholder="Название" value={title} onChange={e => setTitle(e.target.value)} />
+                    <Input
+                        placeholder={locale.words.name}
+                        value={title}
+                        onChange={e => setTitle(e.target.value)} />
                 </div>
                 <div className="col-12">
                     <DatePicker
@@ -47,10 +52,14 @@ export default function TaskAdd() {
             </div>
             <div className="row mt-4">
                 <div className="col-auto">
-                    <Button className="btn-success" onClick={addHandler}>Добавить</Button>
+                    <Button className="btn-success" onClick={addHandler}>
+                        {locale.events.add}
+                    </Button>
                 </div>
                 <div className="col-auto">
-                    <Button className="btn-cencel" onClick={() => setTitle("")}>Очистить</Button>
+                    <Button className="btn-cencel" onClick={() => setTitle("")}>
+                        {locale.events.clear}
+                    </Button>
                 </div>
             </div>
         </div>
