@@ -1,12 +1,12 @@
 import React, { Fragment, useContext, useState } from "react";
 import Head from "next/head";
-import { useSelector } from "react-redux";
 import { Modal, Button } from "antd";
+import { useSelector } from "react-redux";
+import { LocaleContext } from "../../src/context/LocaleContext";
 import TasksList from "../../src/components/TasksList";
 import TaskAdd from "../../src/components/TaskAdd";
 import Filter from "../../src/components/Filter";
 import useFilter from "../../src/hooks/filter.hook";
-import { LocaleContext } from "../../src/context/LocaleContext";
 
 export default function AllTasks() {
 
@@ -14,7 +14,6 @@ export default function AllTasks() {
     const [filters, setFilter] = useState(null);
     const tasks = useSelector(state => state.tasks.tasks);
     const locale = useContext(LocaleContext);
-
     const { filteredList } = useFilter();
 
     return (

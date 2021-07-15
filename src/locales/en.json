@@ -14,7 +14,8 @@
     "titles": {
         "home": "Home",
         "allTasks": "All tasks",
-        "addTask": "Add task"
+        "addTask": "Add task",
+        "task": "Task information"
     },
     "events": {
         "addTask": "Add task",

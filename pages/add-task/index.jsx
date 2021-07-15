@@ -1,7 +1,7 @@
-import React, {Fragment, useContext} from "react";
+import React, { Fragment, useContext } from "react";
 import Head from "next/head";
+import { LocaleContext } from "../../src/context/LocaleContext";
 import TaskAdd from "../../src/components/TaskAdd";
-import {LocaleContext} from "../../src/context/LocaleContext";
 
 export default function AddTask() {
 
