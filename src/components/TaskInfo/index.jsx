@@ -1,8 +1,8 @@
 import React, { Fragment, useContext, useState } from "react";
 import PropTypes from "prop-types";
+import { LocaleContext } from "../../context/LocaleContext";
 import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
-import { LocaleContext } from "../../context/LocaleContext";
 import useMoment from "../../hooks/moment.hook";
 
 export default function TaskInfo({ task }) {

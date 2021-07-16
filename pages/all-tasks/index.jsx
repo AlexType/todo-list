@@ -29,9 +29,7 @@ export default function AllTasks() {
                     </div>
                 </div>
                 <TasksList tasks={filteredList(tasks, filters)} />
-                <Button className="btn-success mt-4"
-                    onClick={() => setModalVisible(true)}
-                >
+                <Button className="btn-success mt-4" onClick={() => setModalVisible(true)}>
                     {locale.events.addTask}
                 </Button>
                 <Modal

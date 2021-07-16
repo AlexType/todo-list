@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import moment from "moment";
+import { useDispatch } from "react-redux";
 import { Input, DatePicker } from "antd";
 import { updateDeadline, updateTitleTask } from "../../../../redux/actions/taskActions";
 import { LocaleContext } from "../../../../context/LocaleContext";

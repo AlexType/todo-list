@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { Radio, message } from "antd";
+import { LocaleContext } from "../../context/LocaleContext";
 import { updateCompletedTask, updateFinishedTask } from "../../redux/actions/taskActions";
 import InputChange from "./components/InputChange";
-import { LocaleContext } from "../../context/LocaleContext";
 
 export default function TaskTitle({ task, change, setChange }) {
 

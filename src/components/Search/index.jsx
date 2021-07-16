@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Input } from "antd";
-import Link from "next/link";
-import styles from "./Search.module.scss";
 import { LocaleContext } from "../../context/LocaleContext";
+import styles from "./Search.module.scss";
 
 const Search = () => {
 

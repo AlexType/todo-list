@@ -4,10 +4,10 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { message } from "antd";
 import { removeTask } from "../../redux/actions/taskActions";
+import { LocaleContext } from "../../context/LocaleContext";
 import TaskHeader from "./components/TaskHeader";
 import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
-import { LocaleContext } from "../../context/LocaleContext";
 import useMoment from "../../hooks/moment.hook";
 
 export default function TaskItem({ task }) {

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Drawer } from "antd";
 import Link from "next/link";
+import { Drawer } from "antd";
+import { LocaleContext } from "../../context/LocaleContext";
 import Search from "../Search";
 import Locale from "../Locale";
-import { LocaleContext } from "../../context/LocaleContext";
 
 const Header = () => {
 
