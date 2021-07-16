@@ -18,14 +18,14 @@ export default function Home() {
             </Head>
             <div className="container">
                 <h1 className="title-page mb-3">{locale.titles.home}</h1>
-                <InfoBlock
-                    all={tasks.length}
-                    today={tasks.filter(filterByDeadline).length}
-                />
-                <p>
-                    <span className="logo">TodoList </span>
-                    - это небольшой сервис, который может отслеживать/редактировать поставленные задачи.
-                </p>
+                <div className="row">
+                    <div className="col-auto">
+                        <InfoBlock
+                            all={tasks.length}
+                            today={tasks.filter(filterByDeadline).length}
+                        />
+                    </div>
+                </div>
             </div>
         </Fragment>
     );
