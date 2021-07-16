@@ -1,0 +1,14 @@
+@import "../../styles/settings/vars";
+
+.item {
+    i {
+        color: $_green;
+        font-size: 18px;
+        margin-left: 5px;
+    }
+    & > span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
