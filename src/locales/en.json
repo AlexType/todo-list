@@ -6,7 +6,8 @@
         "open": "Open",
         "name": "Name",
         "filter": "Filter",
-        "undo": "Undo"
+        "undo": "Undo",
+        "today": "Today"
     },
     "tooltips": {
         "edit": "Edit task",
@@ -46,5 +47,9 @@
     "moment": {
         "indefinitely": "indefinitely",
         "inWork": "in work"
+    },
+    "tasks": {
+        "total": "Total tasks",
+        "today": "For today"
     }
 }

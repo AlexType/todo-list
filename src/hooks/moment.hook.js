@@ -14,5 +14,9 @@ export default function useMoment() {
         return moment(date).locale(locale.locale).endOf("day").fromNow();
     };
 
-    return { dateFromNow, dateEndOfFromNow };
+    const dateToDay = () => {
+        return moment().locale(locale.locale);
+    };
+
+    return { dateFromNow, dateEndOfFromNow, dateToDay };
 }
