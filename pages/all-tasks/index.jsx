@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useState } from "react";
 import Head from "next/head";
-import { Button } from "antd";
 import { useSelector } from "react-redux";
 import { LocaleContext } from "../../src/context/LocaleContext";
 import TasksList from "../../src/components/TasksList";
@@ -29,9 +28,10 @@ export default function AllTasks() {
                     </div>
                 </div>
                 <TasksList tasks={filteredList(tasks, filters)} />
-                <Button className="btn-success mt-4" onClick={() => setAddTaskVisible(true)}>
-                    {locale.events.addTask}
-                </Button>
+                <button className="btn-add mt-4" onClick={() => setAddTaskVisible(true)}>
+                    <i className="bi bi-plus"></i>
+                    <span>{locale.events.addTask}</span>
+                </button>
                 <TaskAdd
                     visible={addTaskVisible}
                     setVisible={setAddTaskVisible}
