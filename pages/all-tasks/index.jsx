@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import Head from "next/head";
-import { Modal, Button } from "antd";
+import { Button } from "antd";
 import { useSelector } from "react-redux";
 import { LocaleContext } from "../../src/context/LocaleContext";
 import TasksList from "../../src/components/TasksList";
@@ -10,7 +10,7 @@ import useFilter from "../../src/hooks/filter.hook";
 
 export default function AllTasks() {
 
-    const [modalVisible, setModalVisible] = useState(false);
+    const [addTaskVisible, setAddTaskVisible] = useState(false);
     const [filters, setFilter] = useState(null);
     const tasks = useSelector(state => state.tasks.tasks);
     const locale = useContext(LocaleContext);
@@ -29,17 +29,13 @@ export default function AllTasks() {
                     </div>
                 </div>
                 <TasksList tasks={filteredList(tasks, filters)} />
-                <Button className="btn-success mt-4" onClick={() => setModalVisible(true)}>
+                <Button className="btn-success mt-4" onClick={() => setAddTaskVisible(true)}>
                     {locale.events.addTask}
                 </Button>
-                <Modal
-                    title="Быстрое добавление"
-                    visible={modalVisible}
-                    onCancel={() => setModalVisible(false)}
-                    footer={null}
-                >
-                    <TaskAdd />
-                </Modal>
+                <TaskAdd
+                    visible={addTaskVisible}
+                    setVisible={setAddTaskVisible}
+                />
             </div >
         </Fragment>
     );

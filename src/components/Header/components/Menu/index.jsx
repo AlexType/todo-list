@@ -32,13 +32,6 @@ const Menu = ({ menuVisible, setMenuVisible }) => {
                         </a>
                     </Link>
                 </div>
-                <div className="col">
-                    <Link href="/add-task">
-                        <a className={styles.link} onClick={close}>
-                            {locale.menu.add}
-                        </a>
-                    </Link>
-                </div>
             </div>
         </Drawer>
     );

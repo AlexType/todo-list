@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Search from "../Search";
 import Locale from "../Locale";
+import TaskAdd from "../TaskAdd";
 import Menu from "./components/Menu";
 import styles from "./Header.module.scss";
 
 const Header = () => {
 
     const [menuVisible, setMenuVisible] = useState(false);
+    const [addTaskVisible, setAddTaskVisible] = useState(false);
 
     return (
         <header className={styles.header}>
@@ -27,8 +29,8 @@ const Header = () => {
                         <Search />
                     </div>
                     <div className={styles.item}>
-                        <button className="btn-ico-lignt me-3">
-                            <i className="bi bi-lightbulb-fill"></i>
+                        <button className="btn-ico-lignt me-3" onClick={() => setAddTaskVisible(!addTaskVisible)}>
+                            <i className="bi bi-plus-square"></i>
                         </button>
                         <Locale />
                         <Link href="https://github.com/AlexType">
@@ -47,6 +49,10 @@ const Header = () => {
             <Menu
                 menuVisible={menuVisible}
                 setMenuVisible={setMenuVisible}
+            />
+            <TaskAdd
+                visible={addTaskVisible}
+                setVisible={setAddTaskVisible}
             />
         </header>
     );

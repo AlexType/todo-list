@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import { Input, DatePicker, Button, message } from "antd";
+import { Input, DatePicker, Button, message, Modal } from "antd";
 import { addTask } from "../../redux/actions/taskActions";
 import { LocaleContext } from "../../context/LocaleContext";
 import useDatePicker from "../../hooks/datePicker.hook";
 
-export default function TaskAdd() {
+export default function TaskAdd({ visible, setVisible }) {
 
     const [title, setTitle] = useState("");
     const [datePicker, setDatePicker] = useState(null);
@@ -33,7 +34,20 @@ export default function TaskAdd() {
     };
 
     return (
-        <div>
+        <Modal
+            title="Добавить задачу"
+            centered
+            visible={visible}
+            onCancel={() => setVisible(false)}
+            footer={[
+                <Button key="1" className="btn-success" onClick={addTaskHandler}>
+                    {locale.events.add}
+                </Button>,
+                <Button key="2" className="btn-cencel" onClick={() => setVisible(false)}>
+                    {locale.events.clear}
+                </Button>
+            ]}
+        >
             <div className="row gy-3">
                 <div className="col-12">
                     <Input
@@ -50,18 +64,11 @@ export default function TaskAdd() {
                     />
                 </div>
             </div>
-            <div className="row mt-4">
-                <div className="col-auto">
-                    <Button className="btn-success" onClick={addTaskHandler}>
-                        {locale.events.add}
-                    </Button>
-                </div>
-                <div className="col-auto">
-                    <Button className="btn-cencel" onClick={() => setTitle("")}>
-                        {locale.events.clear}
-                    </Button>
-                </div>
-            </div>
-        </div>
+        </Modal>
     );
 }
+
+TaskAdd.propTypes = {
+    visible: PropTypes.bool,
+    setVisible: PropTypes.func
+};
