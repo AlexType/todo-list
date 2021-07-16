@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import { Input, DatePicker } from "antd";
 import { updateDeadline, updateTitleTask } from "../../../../redux/actions/taskActions";
+import { LocaleContext } from "../../../../context/LocaleContext";
 
 export default function InputChange({ id, title, setIsChange, deadline }) {
 
     const [changeTitle, setChangeTitle] = useState(title);
     const [changeDatePicker, setChangeDatePicker] = useState(deadline);
+    const locale = useContext(LocaleContext);
     const dispatch = useDispatch();
 
     const onChangeDatePicker = (date) => {
@@ -48,12 +50,12 @@ export default function InputChange({ id, title, setIsChange, deadline }) {
             <div className="row mt-1 gx-2">
                 <div className="col-auto">
                     <button className="task-item__btn done" onClick={update}>
-                        Сохранить
+                        {locale.words.save}
                     </button>
                 </div>
                 <div className="col-auto">
                     <button className="task-item__btn cancel" onClick={() => setIsChange(false)}>
-                        Отменить
+                        {locale.words.undo}
                     </button>
                 </div>
             </div>

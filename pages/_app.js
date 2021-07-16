@@ -10,6 +10,7 @@ import momentEn from "antd/lib/locale/en_US";
 import Header from "../src/components/Header";
 import en from "../src/locales/en.json";
 import ru from "../src/locales/ru.json";
+import "moment/locale/es-us";
 import "moment/locale/ru";
 import "../src/styles/main.scss";
 

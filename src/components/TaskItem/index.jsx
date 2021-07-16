@@ -8,6 +8,7 @@ import TaskHeader from "./components/TaskHeader";
 import DateInfo from "../DateInfo";
 import TaskTitle from "../TaskTitle";
 import { LocaleContext } from "../../context/LocaleContext";
+import useMoment from "../../hooks/moment.hook";
 
 export default function TaskItem({ task }) {
 
@@ -16,6 +17,7 @@ export default function TaskItem({ task }) {
     const dispatch = useDispatch();
     const [isChange, setIsChange] = useState(false);
     const locale = useContext(LocaleContext);
+    const { dateFromNow, dateEndOfFromNow } = useMoment();
 
     const deleteHandler = () => {
         dispatch(removeTask(id));
@@ -41,9 +43,9 @@ export default function TaskItem({ task }) {
                 </div>
                 <DateInfo
                     className="task-item__footer"
-                    start={moment(new Date(created)).fromNow()}
-                    deadline={deadline ? moment(new Date(deadline)).endOf("day").fromNow() : "бессрочно"}
-                    end={finished ? moment(new Date(finished)).fromNow() : "в работе"}
+                    start={dateFromNow(new Date(created))}
+                    deadline={deadline ? dateEndOfFromNow(new Date(deadline)) : locale.moment.indefinitely}
+                    end={finished ? dateFromNow(new Date(finished)) : locale.moment.inWork}
                 />
             </div>
         </section>

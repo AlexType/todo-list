@@ -1,10 +1,12 @@
 {
+    "locale": "en",
     "words": {
         "search": "Search",
         "save": "Save",
         "open": "Open",
         "name": "Name",
-        "filter": "filter"
+        "filter": "Filter",
+        "undo": "Undo"
     },
     "tooltips": {
         "edit": "Edit task",
@@ -20,7 +22,8 @@
     "events": {
         "addTask": "Add task",
         "add": "Add",
-        "clear": "Clear"
+        "clear": "Clear",
+        "editTask": "Edit task"
     },
     "menu": {
         "home": "Home",
@@ -39,5 +42,9 @@
         "complited": "Complited",
         "active": "Active",
         "overdue": "Overdue"
+    },
+    "moment": {
+        "indefinitely": "indefinitely",
+        "inWork": "in work"
     }
 }
