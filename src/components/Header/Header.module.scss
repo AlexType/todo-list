@@ -1,0 +1,32 @@
+@import "../../styles/settings/vars";
+
+.header {
+    padding: 5px 0;
+    background: $_gray;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.651);
+    @media screen and (max-width: 490px) {
+        padding: 10px 0;
+    }
+}
+
+.inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    &:nth-child(2) {
+        flex: 1 0;
+        @media screen and (max-width: 490px) {
+            justify-content: center;
+            flex-basis: 100%;
+            order: 1;
+            margin-top: 10px;
+        }
+    }
+}

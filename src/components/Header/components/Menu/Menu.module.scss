@@ -1,0 +1,11 @@
+.link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fdfdfd;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+    }
+}

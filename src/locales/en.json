@@ -28,8 +28,8 @@
     },
     "menu": {
         "home": "Home",
-        "tasks": "Tasks",
-        "add": "Add"
+        "tasks": "Task list",
+        "add": "Add task"
     },
     "messages": {
         "addSuccess": "Task added successfully",
